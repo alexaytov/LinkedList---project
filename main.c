@@ -51,13 +51,7 @@ int main()
 		switch (mode){
 			case 1:
 				getInfo(&p);
-				head = push(head, p);
-				/*if (fwrite(&p, sizeof(p), 1, fp) != 1) {
-					printf("Проблем при записване във файла!!!");
-					system("pause");
-					exit(1);
-				}
-			*/	
+				head = push(head, p);	
 				break;
 			case 2:
 				priceChange(head);
@@ -93,86 +87,6 @@ int main()
 	}
 	crnt = head;
 	head = free_m(crnt);
-
-
-
-
-
-
-
-	/*NODE *head = NULL, *newE = NULL, *crnt = NULL, *prev = NULL;
-
-	do
-	{
-		newE = (NODE*)malloc(sizeof(NODE));
-		if (newE == NULL)
-		{
-			printf("Не се заделя памет!");
-			exit(1);
-		}
-		printf("\nВъведете име на поредния студент:");
-		scanf("%s", newE->s.name);//proverki
-		if (!strcmp(newE->s.name, "*"))
-			break;
-		printf("\nВъведете фн на поредния студент:");
-		scanf("%d", &newE->s.fn);//proverki
-
-		if (head == NULL)
-		{
-			newE->next = NULL;
-			head = newE;
-		}
-		else
-		{
-			newE->next = head;
-			head = newE;
-			//vuvejdane v opashkata
-			/*crnt = head;
-			while (crnt->next != NULL){
-				crnt = crnt->next;
-			}
-			newE->next = NULL;
-			crnt->next = newE;
-			
-		}
-
-	} while (1);
-	// iztrivane na konkreten element !
-
-	crnt = head;
-	while (crnt != NULL){
-		if (!strcmp("ivan", crnt->s.name)){
-
-
-			if (prev == NULL){
-				head = crnt->next;
-				free(crnt);
-
-				break;
-			}
-			else {
-				prev = crnt->next;
-				crnt->next = crnt - crnt -> next;
-				free(crnt);
-				break;
-			}
-		}
-		
-		prev = crnt;
-		crnt = crnt->next;
-	}
-
-	printf("\nСъдържание на списъка:");
-	crnt = head;
-	while (crnt != NULL)
-	{
-		printf("\nИме:%s", crnt->s.name);
-		printf("Факултетен номер:%d", crnt->s.fn);
-		crnt = crnt->next;
-	}
-	system("pause");
-	*/
-
 	
 	return 0;
 }
