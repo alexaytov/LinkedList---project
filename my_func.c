@@ -11,7 +11,7 @@ FILE * getFile() {
 		fopen("list.dat", "wb");
 	}
 	if (!(fp = fopen("list.dat", "r+"))) {
-		printf("Проблем при зареждаен ан файл - list.dat");
+		printf("РџСЂРѕР±Р»РµРј РїСЂРё Р·Р°СЂРµР¶РґР°РµРЅ Р°РЅ С„Р°Р№Р» - list.dat");
 		system("pause");
 		exit(1);
 	}
@@ -22,13 +22,13 @@ FILE * getFile() {
 void getInfo(MEDICAMENT *p) {
 
 	int i;
-	printf("Име на лекарството: ");
+	printf("РРјРµ РЅР° Р»РµРєР°СЂСЃС‚РІРѕС‚Рѕ: ");
 	//getchar();
 	fflush(stdin);
 	do {
 		if (fgets(p->name, 30, stdin) == NULL) {
 
-			printf("Проблем при четене на данни!!!");
+			printf("РџСЂРѕР±Р»РµРј РїСЂРё С‡РµС‚РµРЅРµ РЅР° РґР°РЅРЅРё!!!");
 			system("pause");
 			exit(1);
 		}
@@ -39,11 +39,11 @@ void getInfo(MEDICAMENT *p) {
 		p->name[i] = '\0';
 	}
 
-	printf("Номенклатурен номер: ");
+	printf("РќРѕРјРµРЅРєР»Р°С‚СѓСЂРµРЅ РЅРѕРјРµСЂ: ");
 
 	if (fgets(p->Nnum, 30, stdin) == NULL) {
 		
-		printf("Проблем при четене на данни!!!");
+		printf("РџСЂРѕР±Р»РµРј РїСЂРё С‡РµС‚РµРЅРµ РЅР° РґР°РЅРЅРё!!!");
 		system("pause");
 		exit(1);
 	}
@@ -51,24 +51,24 @@ void getInfo(MEDICAMENT *p) {
 	if (p->Nnum[i] == '\n') {
 		p->Nnum[i] = '\0';
 	}
-	printf("Цена на лекартсвото: ");
+	printf("Р¦РµРЅР° РЅР° Р»РµРєР°СЂС‚СЃРІРѕС‚Рѕ: ");
 	if (!(scanf("%f", &p->price) > 0)) {
-		printf("Проблем при четене на данни!!!");
+		printf("РџСЂРѕР±Р»РµРј РїСЂРё С‡РµС‚РµРЅРµ РЅР° РґР°РЅРЅРё!!!");
 		system("pause");
 		exit(1);
 	}
 	do {
-		printf("Дата на производство във формат ДД.ММ.ГГГГ: ");
+		printf("Р”Р°С‚Р° РЅР° РїСЂРѕРёР·РІРѕРґСЃС‚РІРѕ РІСЉРІ С„РѕСЂРјР°С‚ Р”Р”.РњРњ.Р“Р“Р“Р“: ");
 		if (!(scanf("%d.%d.%d", &p->date, &p->month, &p->year))) {
-			printf("Проблем при четене на данни!!!");
+			printf("РџСЂРѕР±Р»РµРј РїСЂРё С‡РµС‚РµРЅРµ РЅР° РґР°РЅРЅРё!!!");
 			system("pause");
 			exit(1);
 		}
 	} while (!(p->date >= 1 && p->date <= 31 && p->month >= 1 && p->month <= 12 && p->year > 999 && p->year <= 10000));
 	do {
-		printf("Въведете срок на годност в години: ");
+		printf("Р’СЉРІРµРґРµС‚Рµ СЃСЂРѕРє РЅР° РіРѕРґРЅРѕСЃС‚ РІ РіРѕРґРёРЅРё: ");
 		if (!(scanf("%d", &p->expiryDate))) {
-			printf("Проблем при четене на данни!!!");
+			printf("РџСЂРѕР±Р»РµРј РїСЂРё С‡РµС‚РµРЅРµ РЅР° РґР°РЅРЅРё!!!");
 			system("pause");
 			exit(1);
 		}
@@ -85,12 +85,12 @@ NODE * push(NODE * head, MEDICAMENT p) {
 	hlp->med = p;
 	hlp->next = head;
 	head = hlp;
-	return head; //резултат - ново начало на списъка
+	return head; //СЂРµР·СѓР»С‚Р°С‚ - РЅРѕРІРѕ РЅР°С‡Р°Р»Рѕ РЅР° СЃРїРёСЃСЉРєР°
 }
 
 void checkingID(NODE *head) {
 	if (head == NULL) {
-		printf("\nСписъкът е празен\n\n");
+		printf("\nРЎРїРёСЃСЉРєСЉС‚ Рµ РїСЂР°Р·РµРЅ\n\n");
 		system("pause");
 		system("cls");
 		return;
@@ -99,9 +99,9 @@ void checkingID(NODE *head) {
 	NODE *crnt;
 	char numToCheck[30];
 	
-	printf("Въведете номенклатурен номер: ");
+	printf("Р’СЉРІРµРґРµС‚Рµ РЅРѕРјРµРЅРєР»Р°С‚СѓСЂРµРЅ РЅРѕРјРµСЂ: ");
 	if (!(scanf("%s", numToCheck) > 0)) {
-		printf("Проблем при четене на данни!!!");
+		printf("РџСЂРѕР±Р»РµРј РїСЂРё С‡РµС‚РµРЅРµ РЅР° РґР°РЅРЅРё!!!");
 		system("pause");
 		exit(1);
 	}
@@ -110,11 +110,11 @@ void checkingID(NODE *head) {
 	crnt = head;
 	while (crnt != NULL) {
 		if (!strcmp(numToCheck, crnt->med.Nnum)) {
-			printf("\nИме на лекарството: %s\n", crnt->med.name);
-			printf("Номенклатурен номер: %s\n", crnt->med.Nnum);
-			printf("Цена на лекарството: %.2f\n", crnt->med.price);
-			printf("Дата на производство: %d.%d.%d\n", crnt->med.date, crnt->med.month, crnt->med.year);
-			printf("Срок на годсност %d.%d.%d\n\n", crnt->med.date, crnt->med.month, crnt->med.expiryDate);
+			printf("\nРРјРµ РЅР° Р»РµРєР°СЂСЃС‚РІРѕС‚Рѕ: %s\n", crnt->med.name);
+			printf("РќРѕРјРµРЅРєР»Р°С‚СѓСЂРµРЅ РЅРѕРјРµСЂ: %s\n", crnt->med.Nnum);
+			printf("Р¦РµРЅР° РЅР° Р»РµРєР°СЂСЃС‚РІРѕС‚Рѕ: %.2f\n", crnt->med.price);
+			printf("Р”Р°С‚Р° РЅР° РїСЂРѕРёР·РІРѕРґСЃС‚РІРѕ: %d.%d.%d\n", crnt->med.date, crnt->med.month, crnt->med.year);
+			printf("РЎСЂРѕРє РЅР° РіРѕРґСЃРЅРѕСЃС‚ %d.%d.%d\n\n", crnt->med.date, crnt->med.month, crnt->med.expiryDate);
 
 			flag = 1;
 			break;
@@ -122,7 +122,7 @@ void checkingID(NODE *head) {
 		crnt = crnt->next;
 	}
 	if (!flag) {
-		printf("\nНяма лекарство с номенклатурен номер: %s\n\n", numToCheck);
+		printf("\nРќСЏРјР° Р»РµРєР°СЂСЃС‚РІРѕ СЃ РЅРѕРјРµРЅРєР»Р°С‚СѓСЂРµРЅ РЅРѕРјРµСЂ: %s\n\n", numToCheck);
 	}
 	system("pause");
 
@@ -130,7 +130,7 @@ void checkingID(NODE *head) {
 
 void priceChange(NODE *head) {
 	if (head == NULL) {
-		printf("\nСписъкът е празен\n\n");
+		printf("\nРЎРїРёСЃСЉРєСЉС‚ Рµ РїСЂР°Р·РµРЅ\n\n");
 		system("pause");
 		system("cls");
 		return;
@@ -140,20 +140,20 @@ void priceChange(NODE *head) {
 	int flag = 0;
 	NODE *crnt;
 	crnt = head;
-	printf("Въведете име на лекарство ");
+	printf("Р’СЉРІРµРґРµС‚Рµ РёРјРµ РЅР° Р»РµРєР°СЂСЃС‚РІРѕ ");
 	if (!(scanf("%s", nameToCheck) > 0)) {
-		printf("Проблем при четене на данни!!!");
+		printf("РџСЂРѕР±Р»РµРј РїСЂРё С‡РµС‚РµРЅРµ РЅР° РґР°РЅРЅРё!!!");
 		system("pause");
 		exit(1);
 	}
 	while (crnt != NULL) {
 		if (!strcmp(nameToCheck, crnt->med.name)) {
 
-			printf("\nСтара цена на лекарството: %.2f\n", crnt->med.price);
+			printf("\nРЎС‚Р°СЂР° С†РµРЅР° РЅР° Р»РµРєР°СЂСЃС‚РІРѕС‚Рѕ: %.2f\n", crnt->med.price);
 			do {
-				printf("\nВъведете нова цена на лекартсвото: ");
+				printf("\nР’СЉРІРµРґРµС‚Рµ РЅРѕРІР° С†РµРЅР° РЅР° Р»РµРєР°СЂС‚СЃРІРѕС‚Рѕ: ");
 				if (!(scanf("%f", &crnt->med.price))) {
-					printf("Проблем при четене на данни!!!");
+					printf("РџСЂРѕР±Р»РµРј РїСЂРё С‡РµС‚РµРЅРµ РЅР° РґР°РЅРЅРё!!!");
 					system("pause");
 					exit(1);
 				}
@@ -165,32 +165,32 @@ void priceChange(NODE *head) {
 		crnt = crnt->next;
 	}
 	if (!flag) {
-		printf("Няма лекарство с това име %s в списъка!", nameToCheck);
+		printf("РќСЏРјР° Р»РµРєР°СЂСЃС‚РІРѕ СЃ С‚РѕРІР° РёРјРµ %s РІ СЃРїРёСЃСЉРєР°!", nameToCheck);
 
 	}
 	else {
-		printf("Цената на лекарството е променена\n");
+		printf("Р¦РµРЅР°С‚Р° РЅР° Р»РµРєР°СЂСЃС‚РІРѕС‚Рѕ Рµ РїСЂРѕРјРµРЅРµРЅР°\n");
 	}
 	system("pause");
 }
 
 void printAll(NODE *head) {
 	if (head == NULL) {
-		printf("\nСписъкът е празен\n\n");
+		printf("\nРЎРїРёСЃСЉРєСЉС‚ Рµ РїСЂР°Р·РµРЅ\n\n");
 		system("pause");
 		system("cls");
 		return;
 	}
 	NODE *crnt;
 	crnt = head;
-	printf("ЛЕКАРСТВА:\n");
+	printf("Р›Р•РљРђР РЎРўР’Рђ:\n");
 	while (crnt != NULL) {
 
-		printf("\nИме: %s", crnt->med.name);
-		printf("\nНоменклатурен номер: %s", crnt->med.Nnum);
-		printf("\nЦена: %.2f", crnt->med.price);
-		printf("\nДата на производствo: %d.%d.%d\n", crnt->med.date, crnt->med.month, crnt->med.year);
-		printf("Срок на годност %d.%d.%d\n\n", crnt->med.date, crnt->med.month, crnt->med.expiryDate);
+		printf("\nРРјРµ: %s", crnt->med.name);
+		printf("\nРќРѕРјРµРЅРєР»Р°С‚СѓСЂРµРЅ РЅРѕРјРµСЂ: %s", crnt->med.Nnum);
+		printf("\nР¦РµРЅР°: %.2f", crnt->med.price);
+		printf("\nР”Р°С‚Р° РЅР° РїСЂРѕРёР·РІРѕРґСЃС‚РІo: %d.%d.%d\n", crnt->med.date, crnt->med.month, crnt->med.year);
+		printf("РЎСЂРѕРє РЅР° РіРѕРґРЅРѕСЃС‚ %d.%d.%d\n\n", crnt->med.date, crnt->med.month, crnt->med.expiryDate);
 
 		crnt = crnt->next;
 	}
@@ -201,7 +201,7 @@ void printAll(NODE *head) {
 
 void expDate(NODE *head) {
 	if (head == NULL) {
-		printf("\nСписъкът е празен\n\n");
+		printf("\nРЎРїРёСЃСЉРєСЉС‚ Рµ РїСЂР°Р·РµРЅ\n\n");
 		system("pause");
 		system("cls");
 		return;
@@ -212,9 +212,9 @@ void expDate(NODE *head) {
 	int flag = 0;
 
 	do {
-		printf("Въведете сегашна дата във формат ДД.ММ.ГГГГ: ");
+		printf("Р’СЉРІРµРґРµС‚Рµ СЃРµРіР°С€РЅР° РґР°С‚Р° РІСЉРІ С„РѕСЂРјР°С‚ Р”Р”.РњРњ.Р“Р“Р“Р“: ");
 		if (!(scanf("%d.%d.%d", &date, &month, &year) > 0)) {
-			printf("Проблем при четене на данни!!!");
+			printf("РџСЂРѕР±Р»РµРј РїСЂРё С‡РµС‚РµРЅРµ РЅР° РґР°РЅРЅРё!!!");
 			system("pause");
 			exit(1);
 		}
@@ -222,34 +222,34 @@ void expDate(NODE *head) {
 
 	while (crnt != NULL) {
 		if (year > crnt->med.expiryDate) {
-			printf("\nИме: %s", crnt->med.name);
-			printf("Номенклатурен номер: %s\n", crnt->med.Nnum);
-			printf("Цена: %.2f", crnt->med.price);
-			printf("\nДата на производствo: %d.%d.%d\n", crnt->med.date, crnt->med.month, crnt->med.year);
-			printf("Срок на годност %d.%d.%d\n\n", crnt->med.date, crnt->med.month, crnt->med.expiryDate);
+			printf("\nРРјРµ: %s", crnt->med.name);
+			printf("РќРѕРјРµРЅРєР»Р°С‚СѓСЂРµРЅ РЅРѕРјРµСЂ: %s\n", crnt->med.Nnum);
+			printf("Р¦РµРЅР°: %.2f", crnt->med.price);
+			printf("\nР”Р°С‚Р° РЅР° РїСЂРѕРёР·РІРѕРґСЃС‚РІo: %d.%d.%d\n", crnt->med.date, crnt->med.month, crnt->med.year);
+			printf("РЎСЂРѕРє РЅР° РіРѕРґРЅРѕСЃС‚ %d.%d.%d\n\n", crnt->med.date, crnt->med.month, crnt->med.expiryDate);
 			flag = 1;
 		}
 		else if ((month > crnt->med.month) && (year == crnt->med.expiryDate)) {
-			printf("\nИме: %s", crnt->med.name);
-			printf("\nНоменклатурен номер: %s", crnt->med.Nnum);
-			printf("\nЦена: %.2f", crnt->med.price);
-			printf("\nДата на производствo: %d.%d.%d\n", crnt->med.date, crnt->med.month, crnt->med.year);
-			printf("Срок на годност %d.%d.%d\n\n", crnt->med.date, crnt->med.month, crnt->med.expiryDate);
+			printf("\nРРјРµ: %s", crnt->med.name);
+			printf("\nРќРѕРјРµРЅРєР»Р°С‚СѓСЂРµРЅ РЅРѕРјРµСЂ: %s", crnt->med.Nnum);
+			printf("\nР¦РµРЅР°: %.2f", crnt->med.price);
+			printf("\nР”Р°С‚Р° РЅР° РїСЂРѕРёР·РІРѕРґСЃС‚РІo: %d.%d.%d\n", crnt->med.date, crnt->med.month, crnt->med.year);
+			printf("РЎСЂРѕРє РЅР° РіРѕРґРЅРѕСЃС‚ %d.%d.%d\n\n", crnt->med.date, crnt->med.month, crnt->med.expiryDate);
 			flag = 1;
 		}
 		else if ((date > crnt->med.date) && (month == crnt->med.month) && (year == crnt->med.expiryDate)) {
-			printf("\nИме: %s", crnt->med.name);
-			printf("\nНоменклатурен номер: %s", crnt->med.Nnum);
-			printf("\nЦена: %.2f", crnt->med.price);
-			printf("\nДата на производствo: %d.%d.%d\n", crnt->med.date, crnt->med.month, crnt->med.year);
-			printf("Срок на годност %d.%d.%d\n\n", crnt->med.date, crnt->med.month, crnt->med.expiryDate);
+			printf("\nРРјРµ: %s", crnt->med.name);
+			printf("\nРќРѕРјРµРЅРєР»Р°С‚СѓСЂРµРЅ РЅРѕРјРµСЂ: %s", crnt->med.Nnum);
+			printf("\nР¦РµРЅР°: %.2f", crnt->med.price);
+			printf("\nР”Р°С‚Р° РЅР° РїСЂРѕРёР·РІРѕРґСЃС‚РІo: %d.%d.%d\n", crnt->med.date, crnt->med.month, crnt->med.year);
+			printf("РЎСЂРѕРє РЅР° РіРѕРґРЅРѕСЃС‚ %d.%d.%d\n\n", crnt->med.date, crnt->med.month, crnt->med.expiryDate);
 			flag = 1;
 		}
 
 		crnt = crnt->next;
 	}
 	if (!flag) {
-		printf("\nНяма лекарства с изтекъл срок на годност\n");
+		printf("\nРќСЏРјР° Р»РµРєР°СЂСЃС‚РІР° СЃ РёР·С‚РµРєСЉР» СЃСЂРѕРє РЅР° РіРѕРґРЅРѕСЃС‚\n");
 		system("pause");
 	}
 
@@ -272,7 +272,7 @@ NODE *deleteItem(NODE* head) {
 	int isDeleted = 0;
 	
 	
-	printf("Въведете номенклатурен номер на лекарство: ");
+	printf("Р’СЉРІРµРґРµС‚Рµ РЅРѕРјРµРЅРєР»Р°С‚СѓСЂРµРЅ РЅРѕРјРµСЂ РЅР° Р»РµРєР°СЂСЃС‚РІРѕ: ");
 	scanf("%s", NnumToBeDeleted);
 	
 	crnt = head;
@@ -301,13 +301,13 @@ NODE *deleteItem(NODE* head) {
 
 	}
 	if (isDeleted) {
-		printf("Лекарството е изтрито от системата!\n");
+		printf("Р›РµРєР°СЂСЃС‚РІРѕС‚Рѕ Рµ РёР·С‚СЂРёС‚Рѕ РѕС‚ СЃРёСЃС‚РµРјР°С‚Р°!\n");
 		system("pause");
 		system("cls");
 
 	}
 	else {
-		printf("Не е намерено лекарство с този номенклатурен номер: %s\n", NnumToBeDeleted);
+		printf("РќРµ Рµ РЅР°РјРµСЂРµРЅРѕ Р»РµРєР°СЂСЃС‚РІРѕ СЃ С‚РѕР·Рё РЅРѕРјРµРЅРєР»Р°С‚СѓСЂРµРЅ РЅРѕРјРµСЂ: %s\n", NnumToBeDeleted);
 		system("pause");
 		system("cls");
 
